@@ -88,14 +88,16 @@ textarea {
    ========================================================================== */
 
 body {
-
+  flex-direction: column;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-
 }
 
+code {
+  font-size: 14px;
+}
 
 /* ==========================================================================
    Helper classes

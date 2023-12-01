@@ -21,28 +21,12 @@
 </head>
 
 <body>
-  <!-- <template component="labeled-input">
-    <style>
-      label, input { display: block; }
-      input:required:invalid {
-        border-color: #c00000;
-      }
-    </style>
-    <label inherit="name>for required"><slot>Input</slot></label>
-    <input required inherit="name>id type value required placeholder">
-  </template>
-  
-  <labeled-input name="email" type="email" required>Email</labeled-input> -->
-  
-
   <template component="fancy-hyperlink">
     <style>
       a,
       a:hover,
       a:active,
       a:visited {
-        color: unset;
-        text-decoration: none;
         cursor: pointer;
       }
 
@@ -50,8 +34,8 @@
         display: block;
         position: relative;
         margin-inline: 25px;
-        font-size: 24px;
-        color: blue;
+        font-size: 36px;
+        color: darkblue;
       }
       .link:before {
         content: "";
@@ -73,18 +57,23 @@
     </a></h1>
   </template>
   
-  <fancy-hyperlink href="https://morganwebdev.com">Fancy Hyperlink Morganwebdev.com</fancy-hyperlink>
+  <fancy-hyperlink href="https://morganwebdev.com">Fancy Hyperlink to Morganwebdev.com</fancy-hyperlink>
 
 
-    <!-- <pre> 
-      <template component="fancy-hyperlink">
-      <style>
+  <a href="https://github.com/kgscialdone/facet/tree/master"><h2>Created with Facet</h2></a>
+
+  <h1>Example:</h1>
+
+  <code>
+    <pre>
+    &ltfancy-hyperlink href="https://morganwebdev.com"&gtFancy Hyperlink to Morganwebdev.com&lt/fancy-hyperlink&gt
+
+    &lttemplate component="fancy-hyperlink"&gt
+      &ltstyle&gt
         a,
         a:hover,
         a:active,
         a:visited {
-          color: unset;
-          text-decoration: none;
           cursor: pointer;
         }
   
@@ -92,8 +81,8 @@
           display: block;
           position: relative;
           margin-inline: 25px;
-          font-size: 24px;
-          color: blue;
+          font-size: 36px;
+          color: darkblue;
         }
         .link:before {
           content: "";
@@ -109,15 +98,12 @@
           width: 100%;
           z-index: -1;
         }
-      </style>
-      <h1><a  class="link" inherit="href">
-        <slot></slot>
-      </a></h1>
-    </template>
-    
-    <fancy-hyperlink href="https://morganwebdev.com">Fancy Hyperlink Morganwebdev.com</fancy-hyperlink>
-  </pre> -->
-
+      &lt/style&gt
+      &lth1&gt&lta  class="link" inherit="href"&gt
+        &ltslot&gt&lt/slot&gt
+      &lt/a&gt&lt/h1&gt
+    &lt/template&gt
+  </pre></code>
 
   <script src="js/vendor/facet.js"></script>
 </body>
