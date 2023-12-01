@@ -95,9 +95,20 @@ body {
   min-height: 100vh;
 }
 
-code {
+code pre {
+  color: white;
+  background: black;
   font-size: 14px;
+  display: block;
+  /* background: none; */
+  white-space: pre;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: scroll;
+  max-width: 100%;
+  min-width: 100px;
+  padding: 20px;
 }
+
 
 /* ==========================================================================
    Helper classes
