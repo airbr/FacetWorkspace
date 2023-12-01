@@ -53,17 +53,50 @@
         z-index: -1;
       }
     </style>
-    <h2><a  class="link" inherit="href">
+    <h1><a  class="link" inherit="href">
       <slot></slot>
-    </a></h2>
+    </a></h1>
   </template>
   
   <fancy-hyperlink href="https://morganwebdev.com">Fancy Hyperlinks to Morganwebdev.com and more</fancy-hyperlink>
 
-
   <fancy-hyperlink href="https://github.com/kgscialdone/facet/tree/master">Created with Facet</fancy-hyperlink>
 
   <fancy-hyperlink href="https://facet-workspace.netlify.app/">Fancy Hyperlink Example:</fancy-hyperlink>
+
+  <br>
+  <form onsubmit="addFH(); return false;">
+    <label for="url">Enter an https:// URL to create a fancy-hyperlink:</label>
+    <input id="inputfh" type="url" name="url" id="url" placeholder="https://example.com" pattern="https://.*" size="30" required />
+    <button type="submit"> Add </button>
+  </form>
+  <style>
+    label {
+      display: block;
+      font:
+        1rem 'Fira Sans',
+        sans-serif;
+    }
+
+    input,
+    label {
+      margin: 0.4rem 0;
+    }
+  </style>
+  <br>
+    <div id="parentElement">
+      <span id="childElement"></span>
+    </div>
+  <script>
+    function addFH() {
+      var parentDiv = document.getElementById("childElement").parentNode;
+      var fancyhyperlink = document.createElement("fancy-hyperlink");
+      fancyhyperlink.setAttribute('href', document.getElementById("inputfh").value);
+      fancyhyperlink.innerHTML = document.getElementById("inputfh").value;
+     let sp2 = document.getElementById("childElement");
+     parentDiv.insertBefore(fancyhyperlink, sp2);
+    }
+  </script>
 
   <code>
     <pre>
