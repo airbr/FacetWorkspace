@@ -52,21 +52,23 @@
         z-index: -1;
       }
     </style>
-    <h1><a  class="link" inherit="href">
+    <h2><a  class="link" inherit="href">
       <slot></slot>
-    </a></h1>
+    </a></h2>
   </template>
   
   <fancy-hyperlink href="https://morganwebdev.com">Fancy Hyperlink to Morganwebdev.com</fancy-hyperlink>
 
 
-  <a href="https://github.com/kgscialdone/facet/tree/master"><h2>Created with Facet</h2></a>
+  <fancy-hyperlink href="https://github.com/kgscialdone/facet/tree/master">Created with Facet</fancy-hyperlink>
 
   <h1>Fancy Hyperlink Example:</h1>
 
   <code>
     <pre>
     &ltfancy-hyperlink href="https://morganwebdev.com"&gtFancy Hyperlink to Morganwebdev.com&lt/fancy-hyperlink&gt
+    
+    &ltfancy-hyperlink href="https://github.com/kgscialdone/facet/tree/master"&gtCreated with Facet &lt/fancy-hyperlink&gt
 
     &lttemplate component="fancy-hyperlink"&gt
       &ltstyle&gt
