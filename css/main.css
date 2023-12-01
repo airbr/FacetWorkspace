@@ -108,18 +108,32 @@ code pre {
   min-width: 100px;
   padding: 20px;
 }
-
-
-body {
-  counter-reset: section; /* Set a counter named 'section', and its initial value is 0. */
+label {
+  display: block;
+  font:
+    1rem 'Fira Sans',
+    sans-serif;
 }
-
-fancy-hyperlink::before {
-  font-size: large;
-  counter-increment: section; /* Increment the value of section counter by 1 */
-  content: "Fancy Hyperlink: " counter(section) ": "; /* Display the word 'Section ', the value of
-                                              section counter, and a colon before the content
-                                                of each h3 */
+input,
+label {
+  margin: 0.4rem 0;
+}
+  details {
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  padding: 0.5em 0.5em 0;
+}
+summary {
+  font-weight: bold;
+  margin: -0.5em -0.5em 0;
+  padding: 0.5em;
+}
+details[open] {
+  padding: 0.5em;
+}
+details[open] summary {
+  border-bottom: 1px solid #aaa;
+  margin-bottom: 0.5em;
 }
 
 /* ==========================================================================

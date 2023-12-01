@@ -2,11 +2,11 @@
 <html class="no-js" lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Facet workspace - morganwebdev</title>
+  <title>Facet example - web components</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta property="og:title" content="Facet Workspace - morganwebdev">
+  <meta property="og:title" content="Facet example web component">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://facet-workspace.netlify.app/">
 
@@ -30,7 +30,6 @@
         cursor: pointer;
         text-decoration: none;
       }
-
       .link {
         display: block;
         position: relative;
@@ -52,90 +51,111 @@
         width: 100%;
         z-index: -1;
       }
+      h1 {
+        text-align: center;
+      }
+      h1[data-rainbow-text="true"] > a {
+        background-image: repeating-linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red, violet);
+        text-align: center;
+        background-size: 800% 800%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: rainbow 8s ease infinite;
+      } 
+      @keyframes rainbow { 
+        0%{background-position:0% 50%}
+        50%{background-position:100% 25%}
+        100%{background-position:0% 50%}
+      }
+
     </style>
-    <h1><a  class="link" inherit="href">
+    <h1 inherit="data-rainbow-text"><a  class="link" inherit="href">
       <slot></slot>
     </a></h1>
   </template>
   
-  <fancy-hyperlink href="https://morganwebdev.com">Fancy Hyperlinks to Morganwebdev.com and more</fancy-hyperlink>
+  <br>
+  <fancy-hyperlink href="https://morganwebdev.com">Fancy Hyperlinks to https://morganwebdev.com and more</fancy-hyperlink>
 
   <fancy-hyperlink href="https://github.com/kgscialdone/facet/tree/master">Created with Facet</fancy-hyperlink>
-
-  <fancy-hyperlink href="https://facet-workspace.netlify.app/">Fancy Hyperlink Example:</fancy-hyperlink>
-
   <br>
   <form onsubmit="addFH(); return false;">
-    <label for="inputfh">Enter an https:// URL to create a fancy-hyperlink:</label>
+    <label for="inputfh">Enter a https:// URL to create a fancy-hyperlink:</label>
     <input id="inputfh" type="url" name="url" id="url" placeholder="https://example.com" pattern="https://.*" size="30" required />
     <button type="submit"> Add </button>
+    <br>
+    <details>
+      <summary>Options</summary>
+      <label for="text">label:</label><input type="text" id="label-text" name="label-text" />
+      <label for="rainbow-text">rainbow mode:</label><input type="checkbox" id="rainbow-text" name="rainbow-text" />
+    </details>
   </form>
-  <style>
-    label {
-      display: block;
-      font:
-        1rem 'Fira Sans',
-        sans-serif;
-    }
-
-    input,
-    label {
-      margin: 0.4rem 0;
-    }
-  </style>
   <br>
+
+  <hr>
+
     <div id="parentElement">
       <span id="childElement"></span>
     </div>
+
+    <hr>
   <script>
     function addFH() {
-      var parentDiv = document.getElementById("childElement").parentNode;
-      var fancyhyperlink = document.createElement("fancy-hyperlink");
+      let parentDiv = document.getElementById("childElement").parentNode;
+      let fancyhyperlink = document.createElement("fancy-hyperlink");
       fancyhyperlink.setAttribute('href', document.getElementById("inputfh").value);
-      fancyhyperlink.innerHTML = document.getElementById("inputfh").value;
+      fancyhyperlink.setAttribute('data-rainbow-text', document.getElementById("rainbow-text").checked);
+      if (document.getElementById("label-text").value !== '') {
+        fancyhyperlink.innerHTML = document.getElementById("label-text").value;
+      } else {
+        fancyhyperlink.innerHTML = document.getElementById("inputfh").value;
+      }
      let sp2 = document.getElementById("childElement");
      parentDiv.insertBefore(fancyhyperlink, sp2);
     }
   </script>
 
+  <h3> Usage in HTML:</h3>
 
-  <h3> Usage:</h3>
-
-  <code><pre>&ltfancy-hyperlink href="https://example.com"&gt Example dot com &lt/fancy-hyperlink&gt
+  <code>
+    <pre>
+&ltfancy-hyperlink href="https://example.com"&gt 
+Example dot com label 
+&lt/fancy-hyperlink&gt
   </pre></code>
-  <h3>Component definition:</h3>
+  <h3>Component definition (in HTML, CSS):</h3>
   <code>
     <pre>
     &lttemplate component="fancy-hyperlink"&gt
       &ltstyle&gt
-        a,
-        a:hover,
-        a:active,
-        a:visited {
-          cursor: pointer;
-        }
-  
-        .link {
-          display: block;
-          position: relative;
-          margin-inline: 25px;
-          font-size: 36px;
-          color: darkblue;
-        }
-        .link:before {
-          content: "";
-          width: 0;
-          height: 2px;
-          background-color: #0fa3ff;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          transition: width 0.3s ease-in-out;
-        }
-        .link:hover:before {
-          width: 100%;
-          z-index: -1;
-        }
+      a,
+      a:hover,
+      a:active,
+      a:visited {
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .link {
+        display: block;
+        position: relative;
+        margin-inline: 25px;
+        font-size: 36px;
+        color: darkblue;
+      }
+      .link:before {
+        content: "";
+        width: 0;
+        height: 2px;
+        background-color: #0fa3ff;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        transition: width 0.3s ease-in-out;
+      }
+      .link:hover:before {
+        width: 100%;
+        z-index: -1;
+      }
       &lt/style&gt
       &lth1&gt&lta  class="link" inherit="href"&gt
         &ltslot&gt&lt/slot&gt
@@ -145,8 +165,10 @@
 
   <h3>One 2.47 KB file over CDN to try: </h3>
 
-  <code><pre>&ltscript src="https://cdn.jsdelivr.net/gh/kgscialdone/facet@0.1.0/facet.min.js"&gt&lt/script&gt
-  </pre></code>
+  <a href="https://cdn.jsdelivr.net/gh/kgscialdone/facet@0.1.0/facet.min.js"><code>
+  <pre>
+&ltscript src="https://cdn.jsdelivr.net/gh/kgscialdone/facet@0.1.0/facet.min.js"&gt&lt/script&gt
+  </pre></code></a>
   <script src="js/vendor/facet.js"></script>
 </body>
 
