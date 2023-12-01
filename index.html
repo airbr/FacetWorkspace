@@ -21,17 +21,104 @@
 </head>
 
 <body>
-  <template component="labeled-input">
+  <!-- <template component="labeled-input">
     <style>
-      * { display: block; }
-      label[required]::after { content: ' *'; color: red; }
+      label, input { display: block; }
+      input:required:invalid {
+        border-color: #c00000;
+      }
     </style>
     <label inherit="name>for required"><slot>Input</slot></label>
-    <input inherit="name>id type value required placeholder">
+    <input required inherit="name>id type value required placeholder">
   </template>
   
-  <labeled-input name="email" type="email" required>Email</labeled-input>
+  <labeled-input name="email" type="email" required>Email</labeled-input> -->
   
+
+  <template component="fancy-hyperlink">
+    <style>
+      a,
+      a:hover,
+      a:active,
+      a:visited {
+        color: unset;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .link {
+        display: block;
+        position: relative;
+        margin-inline: 25px;
+        font-size: 24px;
+        color: blue;
+      }
+      .link:before {
+        content: "";
+        width: 0;
+        height: 2px;
+        background-color: #0fa3ff;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        transition: width 0.3s ease-in-out;
+      }
+      .link:hover:before {
+        width: 100%;
+        z-index: -1;
+      }
+    </style>
+    <h1><a  class="link" inherit="href">
+      <slot></slot>
+    </a></h1>
+  </template>
+  
+  <fancy-hyperlink href="https://morganwebdev.com">Fancy Hyperlink Morganwebdev.com</fancy-hyperlink>
+
+
+    <!-- <pre> 
+      <template component="fancy-hyperlink">
+      <style>
+        a,
+        a:hover,
+        a:active,
+        a:visited {
+          color: unset;
+          text-decoration: none;
+          cursor: pointer;
+        }
+  
+        .link {
+          display: block;
+          position: relative;
+          margin-inline: 25px;
+          font-size: 24px;
+          color: blue;
+        }
+        .link:before {
+          content: "";
+          width: 0;
+          height: 2px;
+          background-color: #0fa3ff;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          transition: width 0.3s ease-in-out;
+        }
+        .link:hover:before {
+          width: 100%;
+          z-index: -1;
+        }
+      </style>
+      <h1><a  class="link" inherit="href">
+        <slot></slot>
+      </a></h1>
+    </template>
+    
+    <fancy-hyperlink href="https://morganwebdev.com">Fancy Hyperlink Morganwebdev.com</fancy-hyperlink>
+  </pre> -->
+
+
   <script src="js/vendor/facet.js"></script>
 </body>
 
