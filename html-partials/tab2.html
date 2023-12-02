@@ -3,13 +3,10 @@
     <button hx-get="/html-partials/tab2" class="selected" aria-selected="true" autofocus="" role="tab" aria-selected="false" aria-controls="tab-content">Example 2: subdued-text</button>
     <!-- <button hx-get="/html-partials/tab3" role="tab" aria-selected="false" aria-controls="tab-content">Tab 3</button> -->
 </div>
-
-
 <br>
 <br>
 <br>
-<subdued-text>This is Subdued Text</subdued-text>
-
+<subdued-text>This is Subdued Text. It grows on you.</subdued-text>
 
 <h3> Declaration in HTML:</h3>
 
@@ -22,18 +19,18 @@ This is Subdued Text
 <h3>Component definition (in HTML, CSS):</h3>
 <code>
   <pre>
-&lttemplate component="subdued-text"&gt
+    &ltdiv&gt
+    &ltsmall&gt&ltslot&gt&lt/slot&gt&lt/small&gt
+    &lt/div&gt
 
-&ltspan contenteditable="true"&gt
-  &lti&gt&ltslot&gt&lt/slot&gt&lt/i&gt
-&lt/span&gt
-
-&ltstyle&gt
-span {
-    font-size: small;
-    text-decoration: underline;
-}
-&lt/style&gt
-
-&lt/template&gt
-</pre></code>
+    &ltstyle&gt
+    div {
+        font-style: italic,
+        text-align: center;
+    }
+    small:hover {
+        font-size: larger;
+    }
+    &lt/style&gt
+</pre>
+</code>

@@ -78,25 +78,30 @@
   </template>
   
   <template component="subdued-text">
-    <span contenteditable="true">
-      <i><slot></slot></i>
-    </span>
+    <div>
+      <small><slot></slot></small>
+    </div>
     <style>
-      span {
-        font-size: small;
-        text-decoration: underline;
+      div {
+        font-style: italic;
+        text-align: center;
+      }
+      small:hover {
+        font-size: larger;
       }
     </style>
   </template>
   <br>
   <br>
   <fancy-hyperlink href="https://github.com/kgscialdone/facet/tree/master">Created with Facet</fancy-hyperlink>
+  
   <subdued-text>And a little HTMX and little JS for presentation</subdued-text>
-  <br>
-  <br>
+
+  <subdued-text contenteditable="true"></subdued-text>
+
+
   <div id="tab-content" role="tabpanel" class="tab-content">
     <div id="tabs" hx-get="/html-partials/tab1" hx-trigger="load delay:100ms" hx-target="#tabs" hx-swap="innerHTML">
-    
     </div>
   </div>
 
