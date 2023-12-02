@@ -96,13 +96,12 @@
   
   <subdued-text>And a little HTMX</subdued-text>
 
-  <div id="tabs" hx-get="/html-partials/tab1" hx-trigger="load delay:100ms" hx-target="#tabs" hx-swap="innerHTML">
+  <div id="tabs-container" hx-get="/html-partials/tab1" hx-trigger="load delay:100ms" hx-target="this" hx-swap="innerHTML">
   </div>
 
   <h3>+ One 2.47 KB script file over CDN to try: </h3>
   <fancy-hyperlink href="https://cdn.jsdelivr.net/gh/kgscialdone/facet@0.1.0/facet.min.js">Facet 0.1.0</fancy-hyperlink>
-  <br>
-  <br>
+
   <fancy-hyperlink href="https://morganwebdev.com">Me: Fancy hyperlink to <br> https://morganwebdev.com</fancy-hyperlink>
 
   <script src="js/vendor/facet.js"></script>

@@ -1,12 +1,9 @@
-<div id="tabs" hx-target="this" hx-swap="innerHTML" class="">
+<div id="tabs" hx-target="#tabs-container" hx-swap="innerHTML" class="">
     <div class="tab-list" role="tablist">
     <button hx-get="/html-partials/tab1" role="tab" aria-selected="false" aria-controls="tab-content">Example 1: fancy-hyperlink</button>
     <button hx-get="/html-partials/tab2" class="selected" aria-selected="true" autofocus="" role="tab" aria-selected="false" aria-controls="tab-content">Example 2: subdued-text</button>
     <!-- <button hx-get="/html-partials/tab3" role="tab" aria-selected="false" aria-controls="tab-content">Tab 3</button> -->
 </div>
-<br>
-<br>
-<br>
 <subdued-text>This is Subdued Text. It grows on you.</subdued-text>
 
 <h3> Declaration in HTML:</h3>

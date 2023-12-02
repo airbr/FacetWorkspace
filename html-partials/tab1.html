@@ -1,10 +1,10 @@
-<div id="tabs" hx-target="this" hx-swap="innerHTML" class="">
+<div id="tabs" hx-target="#tabs-container" hx-swap="innerHTML" class="">
   <div class="tab-list" role="tablist">
     <button hx-get="/html-partials/tab1" class="selected" role="tab" aria-selected="true" aria-controls="tab-content">Example 1: fancy-hyperlink</button>
     <button hx-get="/html-partials/tab2" role="tab" aria-controls="tab-content">Example 2: subdued-text</button>
     <!-- <button hx-get="/html-partials/tab3" role="tab" aria-selected="false" aria-controls="tab-content">Tab 3</button> -->
   </div>
-  
+
   <form onsubmit="addFH(); return false;">
     <label for="inputfh">Enter an https:// URL to create a fancy-hyperlink:</label>
     <input id="inputfh" type="url" name="url" id="url" placeholder="https://example.com" pattern="https://.*" size="30" required />

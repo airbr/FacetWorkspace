@@ -108,6 +108,7 @@ textarea {
 }
 
 body {
+  padding-left: 16px;
   flex-direction: column;
   display: flex;
   justify-content: center;
