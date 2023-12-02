@@ -22,6 +22,13 @@
 
 <body>
   <template component="fancy-hyperlink">
+    
+    <h1>
+      <a inherit="href data-rainbow-text" class="link">
+        <slot></slot>
+      </a>
+    </h1>
+
     <style>
       a,
       a:hover,
@@ -54,7 +61,7 @@
       h1 {
         text-align: center;
       }
-      h1[data-rainbow-text="true"] > a {
+      a[data-rainbow-text="true"] {
         background-image: repeating-linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red, violet);
         text-align: center;
         background-size: 800% 800%;
@@ -67,16 +74,10 @@
         50%{background-position:100% 25%}
         100%{background-position:0% 50%}
       }
-
     </style>
-    <h1 inherit="data-rainbow-text"><a  class="link" inherit="href">
-      <slot></slot>
-    </a></h1>
   </template>
   
   <br>
-  <fancy-hyperlink href="https://morganwebdev.com">Fancy hyperlink to my website</fancy-hyperlink>
-
   <fancy-hyperlink href="https://github.com/kgscialdone/facet/tree/master">Created with Facet</fancy-hyperlink>
   <br>
   <form onsubmit="addFH(); return false;">
@@ -109,56 +110,65 @@
     }
   </script>
 
-  <h3> Usage in HTML:</h3>
+  <h3> Declaration in HTML:</h3>
 
   <code>
     <pre>
 &ltfancy-hyperlink href="https://example.com"&gt 
-Example.com
+    Example.com
 &lt/fancy-hyperlink&gt
   </pre></code>
   <h3>Component definition (in HTML, CSS):</h3>
   <code>
     <pre>
-    &lttemplate component="fancy-hyperlink"&gt
-      &ltstyle&gt
-      a,
-      a:hover,
-      a:active,
-      a:visited {
-        cursor: pointer;
-        text-decoration: none;
-      }
-      .link {
-        display: block;
-        position: relative;
-        margin-inline: 25px;
-        font-size: 36px;
-        color: darkblue;
-      }
-      .link:before {
-        content: "";
-        width: 0;
-        height: 2px;
-        background-color: #0fa3ff;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        transition: width 0.3s ease-in-out;
-      }
-      .link:hover:before {
-        width: 100%;
-        z-index: -1;
-      }
-      &lt/style&gt
-      &lth1&gt&lta  class="link" inherit="href"&gt
-        &ltslot&gt&lt/slot&gt
-      &lt/a&gt&lt/h1&gt
-    &lt/template&gt
+  &lttemplate component="fancy-hyperlink"&gt
+
+  &lth1&gt
+    &lta class="link" inherit="href"&gt
+      &ltslot&gt&lt/slot&gt
+    &lt/a&gt
+  &lt/h1&gt
+
+  &ltstyle&gt
+  a,
+  a:hover,
+  a:active,
+  a:visited {
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .link {
+    display: block;
+    position: relative;
+    margin-inline: 25px;
+    font-size: 36px;
+    color: darkblue;
+  }
+  .link:before {
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: #0fa3ff;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transition: width 0.3s ease-in-out;
+  }
+  .link:hover:before {
+    width: 100%;
+    z-index: -1;
+  }
+  &lt/style&gt
+
+  &lt/template&gt
   </pre></code>
 
-  <h3>One 2.47 KB script file over CDN to try: </h3>
+  <h3>+ One 2.47 KB script file over CDN to try: </h3>
   <fancy-hyperlink href="https://cdn.jsdelivr.net/gh/kgscialdone/facet@0.1.0/facet.min.js">Facet 0.1.0</fancy-hyperlink>
+  <br>
+  <br>
+  <fancy-hyperlink href="https://morganwebdev.com">Me: Fancy hyperlink to <br> https://morganwebdev.com</fancy-hyperlink>
+
   <script src="js/vendor/facet.js"></script>
 </body>
 
