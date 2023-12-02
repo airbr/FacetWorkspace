@@ -1,0 +1,88 @@
+<div id="tabs" hx-target="this" hx-swap="innerHTML" class=""><div class="tab-list" role="tablist">
+    <button hx-get="/html-partials/tab1" class="selected" role="tab" aria-selected="true" aria-controls="tab-content">Example 1: fancy-hyperlink</button>
+    <button hx-get="/html-partials/tab2" role="tab" aria-controls="tab-content">Example 2: subdued text</button>
+    <!-- <button hx-get="/html-partials/tab3" role="tab" aria-selected="false" aria-controls="tab-content">Tab 3</button> -->
+</div>
+
+<form onsubmit="addFH(); return false;">
+    <label for="inputfh">Enter an https:// URL to create a fancy-hyperlink:</label>
+    <input id="inputfh" type="url" name="url" id="url" placeholder="https://example.com" pattern="https://.*" size="30" required />
+    <button type="submit"> Add </button>
+    <br>
+    <details>
+      <summary>Options</summary>
+      <label for="label-text">label:</label><input type="text" id="label-text" name="label-text" />
+      <label for="rainbow-text">rainbow mode:</label><input type="checkbox" id="rainbow-text" name="rainbow-text" />
+    </details>
+  </form>
+    <div id="parentElement">
+      <span id="childElement"></span>
+    </div>
+  <script>
+    function addFH() {
+      let parentDiv = document.getElementById("childElement").parentNode;
+      let fancyhyperlink = document.createElement("fancy-hyperlink");
+      fancyhyperlink.setAttribute('href', document.getElementById("inputfh").value);
+      fancyhyperlink.setAttribute('data-rainbow-text', document.getElementById("rainbow-text").checked);
+      if (document.getElementById("label-text").value !== '') {
+        fancyhyperlink.innerHTML = document.getElementById("label-text").value;
+      } else {
+        fancyhyperlink.innerHTML = document.getElementById("inputfh").value;
+      }
+     let sp2 = document.getElementById("childElement");
+     parentDiv.insertBefore(fancyhyperlink, sp2);
+    }
+  </script>
+
+<h3> Declaration in HTML:</h3>
+
+<code>
+  <pre>
+&ltfancy-hyperlink href="https://example.com"&gt 
+  Example.com
+&lt/fancy-hyperlink&gt
+</pre></code>
+<h3>Component definition (in HTML, CSS):</h3>
+<code>
+  <pre>
+&lttemplate component="fancy-hyperlink"&gt
+
+&lth1&gt
+  &lta class="link" inherit="href"&gt
+    &ltslot&gt&lt/slot&gt
+  &lt/a&gt
+&lt/h1&gt
+
+&ltstyle&gt
+a,
+a:hover,
+a:active,
+a:visited {
+  cursor: pointer;
+  text-decoration: none;
+}
+.link {
+  display: block;
+  position: relative;
+  margin-inline: 25px;
+  font-size: 36px;
+  color: darkblue;
+}
+.link:before {
+  content: "";
+  width: 0;
+  height: 2px;
+  background-color: #0fa3ff;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transition: width 0.3s ease-in-out;
+}
+.link:hover:before {
+  width: 100%;
+  z-index: -1;
+}
+&lt/style&gt
+
+&lt/template&gt
+</pre></code>

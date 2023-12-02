@@ -77,91 +77,28 @@
     </style>
   </template>
   
+  <template component="subdued-text">
+    <span contenteditable="true">
+      <i><slot></slot></i>
+    </span>
+    <style>
+      span {
+        font-size: small;
+        text-decoration: underline;
+      }
+    </style>
+  </template>
+  <br>
   <br>
   <fancy-hyperlink href="https://github.com/kgscialdone/facet/tree/master">Created with Facet</fancy-hyperlink>
+  <subdued-text>And a little HTMX and little JS for presentation</subdued-text>
   <br>
-  <form onsubmit="addFH(); return false;">
-    <label for="inputfh">Enter an https:// URL to create a fancy-hyperlink:</label>
-    <input id="inputfh" type="url" name="url" id="url" placeholder="https://example.com" pattern="https://.*" size="30" required />
-    <button type="submit"> Add </button>
-    <br>
-    <details>
-      <summary>Options</summary>
-      <label for="label-text">label:</label><input type="text" id="label-text" name="label-text" />
-      <label for="rainbow-text">rainbow mode:</label><input type="checkbox" id="rainbow-text" name="rainbow-text" />
-    </details>
-  </form>
-    <div id="parentElement">
-      <span id="childElement"></span>
+  <br>
+  <div id="tab-content" role="tabpanel" class="tab-content">
+    <div id="tabs" hx-get="/html-partials/tab1" hx-trigger="load delay:100ms" hx-target="#tabs" hx-swap="innerHTML">
+    
     </div>
-  <script>
-    function addFH() {
-      let parentDiv = document.getElementById("childElement").parentNode;
-      let fancyhyperlink = document.createElement("fancy-hyperlink");
-      fancyhyperlink.setAttribute('href', document.getElementById("inputfh").value);
-      fancyhyperlink.setAttribute('data-rainbow-text', document.getElementById("rainbow-text").checked);
-      if (document.getElementById("label-text").value !== '') {
-        fancyhyperlink.innerHTML = document.getElementById("label-text").value;
-      } else {
-        fancyhyperlink.innerHTML = document.getElementById("inputfh").value;
-      }
-     let sp2 = document.getElementById("childElement");
-     parentDiv.insertBefore(fancyhyperlink, sp2);
-    }
-  </script>
-
-  <h3> Declaration in HTML:</h3>
-
-  <code>
-    <pre>
-&ltfancy-hyperlink href="https://example.com"&gt 
-    Example.com
-&lt/fancy-hyperlink&gt
-  </pre></code>
-  <h3>Component definition (in HTML, CSS):</h3>
-  <code>
-    <pre>
-  &lttemplate component="fancy-hyperlink"&gt
-
-  &lth1&gt
-    &lta class="link" inherit="href"&gt
-      &ltslot&gt&lt/slot&gt
-    &lt/a&gt
-  &lt/h1&gt
-
-  &ltstyle&gt
-  a,
-  a:hover,
-  a:active,
-  a:visited {
-    cursor: pointer;
-    text-decoration: none;
-  }
-  .link {
-    display: block;
-    position: relative;
-    margin-inline: 25px;
-    font-size: 36px;
-    color: darkblue;
-  }
-  .link:before {
-    content: "";
-    width: 0;
-    height: 2px;
-    background-color: #0fa3ff;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    transition: width 0.3s ease-in-out;
-  }
-  .link:hover:before {
-    width: 100%;
-    z-index: -1;
-  }
-  &lt/style&gt
-
-  &lt/template&gt
-  </pre></code>
+  </div>
 
   <h3>+ One 2.47 KB script file over CDN to try: </h3>
   <fancy-hyperlink href="https://cdn.jsdelivr.net/gh/kgscialdone/facet@0.1.0/facet.min.js">Facet 0.1.0</fancy-hyperlink>
@@ -170,6 +107,7 @@
   <fancy-hyperlink href="https://morganwebdev.com">Me: Fancy hyperlink to <br> https://morganwebdev.com</fancy-hyperlink>
 
   <script src="js/vendor/facet.js"></script>
+  <script src="js/vendor/htmx.min.js"></script>
 </body>
 
 </html>
