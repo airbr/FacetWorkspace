@@ -21,77 +21,6 @@
 </head>
 
 <body>
-  <template component="fancy-hyperlink">
-    
-    <h1>
-      <a inherit="href data-rainbow-text" class="link">
-        <slot></slot>
-      </a>
-    </h1>
-
-    <style>
-      a,
-      a:hover,
-      a:active,
-      a:visited {
-        cursor: pointer;
-        text-decoration: none;
-      }
-      .link {
-        display: block;
-        position: relative;
-        margin-inline: 25px;
-        font-size: 36px;
-        color: darkblue;
-      }
-      .link:before {
-        content: "";
-        width: 0;
-        height: 2px;
-        background-color: #0fa3ff;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        transition: width 0.3s ease-in-out;
-      }
-      .link:hover:before {
-        width: 100%;
-        z-index: -1;
-      }
-      h1 {
-        text-align: center;
-      }
-      a[data-rainbow-text="true"] {
-        background-image: repeating-linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red, violet);
-        text-align: center;
-        background-size: 800% 800%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: rainbow 8s ease infinite;
-      } 
-      @keyframes rainbow { 
-        0%{background-position:0% 50%}
-        50%{background-position:100% 25%}
-        100%{background-position:0% 50%}
-      }
-    </style>
-  </template>
-  
-  <template component="subdued-text">
-    <div>
-      <small><slot></slot></small>
-    </div>
-    <style>
-      div {
-        font-style: italic;
-        text-align: center;
-      }
-      small:hover {
-        font-size: larger;
-      }
-    </style>
-  </template>
-
   <fancy-hyperlink href="https://github.com/kgscialdone/facet/tree/master">Created with Facet</fancy-hyperlink>
   
   <subdued-text>And a little HTMX</subdued-text>
@@ -107,5 +36,181 @@
   <script src="js/vendor/facet.js"></script>
   <script src="js/vendor/htmx.min.js"></script>
 </body>
+
+<template component="fancy-hyperlink">
+    
+  <h1>
+    <a inherit="href data-rainbow-text" class="link">
+      <slot></slot>
+    </a>
+  </h1>
+
+  <style>
+    a,
+    a:hover,
+    a:active,
+    a:visited {
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .link {
+      display: block;
+      position: relative;
+      margin-inline: 25px;
+      font-size: 36px;
+      color: darkblue;
+    }
+    .link:before {
+      content: "";
+      width: 0;
+      height: 2px;
+      background-color: #0fa3ff;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      transition: width 0.3s ease-in-out;
+    }
+    .link:hover:before {
+      width: 100%;
+      z-index: -1;
+    }
+    h1 {
+      text-align: center;
+    }
+    a[data-rainbow-text="true"] {
+      background-image: repeating-linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red, violet);
+      text-align: center;
+      background-size: 800% 800%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbow 8s ease infinite;
+    } 
+    @keyframes rainbow { 
+      0%{background-position:0% 50%}
+      50%{background-position:100% 25%}
+      100%{background-position:0% 50%}
+    }
+  </style>
+</template>
+
+<template component="subdued-text">
+  <div>
+    <small><slot></slot></small>
+  </div>
+  <style>
+    div {
+      font-style: italic;
+      text-align: center;
+    }
+    small:hover {
+      font-size: larger;
+    }
+  </style>
+</template>
+
+<template component="checkbox-menu">
+    <p>
+      <input type="checkbox" id="test1" />
+      <label for="test1">One</label>
+    </p>
+    <p>
+      <input type="checkbox" id="test2" checked="checked" />
+      <label for="test2">Two</label>
+    </p>
+    <p>
+      <input type="checkbox" id="test3" checked="checked" disabled="disabled" />
+      <label for="test3">Three</label>
+    </p>
+      <p>
+        <input type="checkbox" id="test4" disabled="disabled" />
+        <label for="test4">Four</label>
+    </p>
+  </form>
+  <style>
+    /* Base for label styling */
+    [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+      position: absolute;
+      left: 0;
+      opacity: 0.01;
+    }
+    [type="checkbox"]:not(:checked) + label,
+    [type="checkbox"]:checked + label {
+      position: relative;
+      padding-left: 2.3em;
+      font-size: 1.05em;
+      line-height: 1.7;
+      cursor: pointer;
+    }
+
+    /* checkbox aspect */
+    [type="checkbox"]:not(:checked) + label:before,
+    [type="checkbox"]:checked + label:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1.4em;
+      height: 1.4em;
+      border: 1px solid #aaa;
+      background: #FFF;
+      border-radius: .2em;
+      box-shadow: inset 0 1px 3px rgba(0,0,0, .1), 0 0 0 rgba(203, 34, 237, .2);
+      -webkit-transition: all .275s;
+          transition: all .275s;
+    }
+
+    /* checked mark aspect */
+    [type="checkbox"]:not(:checked) + label:after,
+    [type="checkbox"]:checked + label:after {
+      content: '✕';
+      position: absolute;
+      top: .525em;
+      left: .18em;
+      font-size: 1.375em;
+      color: #CB22ED;
+      line-height: 0;
+      -webkit-transition: all .2s;
+          transition: all .2s;
+    }
+
+    /* checked mark aspect changes */
+    [type="checkbox"]:not(:checked) + label:after {
+      opacity: 0;
+      -webkit-transform: scale(0) rotate(45deg);
+          transform: scale(0) rotate(45deg);
+    }
+
+    [type="checkbox"]:checked + label:after {
+      opacity: 1;
+      -webkit-transform: scale(1) rotate(0);
+          transform: scale(1) rotate(0);
+    }
+
+    /* Disabled checkbox */
+    [type="checkbox"]:disabled:not(:checked) + label:before,
+    [type="checkbox"]:disabled:checked + label:before {
+      box-shadow: none;
+      border-color: #bbb;
+      background-color: #e9e9e9;
+    }
+
+    [type="checkbox"]:disabled:checked + label:after {
+      color: #777;
+    }
+
+    [type="checkbox"]:disabled + label {
+      color: #aaa;
+    }
+
+    /* Accessibility */
+    [type="checkbox"]:checked:focus + label:before,
+    [type="checkbox"]:not(:checked):focus + label:before {
+      box-shadow: inset 0 1px 3px rgba(0,0,0, .1), 0 0 0 6px rgba(203, 34, 237, .2);
+    }
+
+  </style>
+</template>
+
 
 </html>

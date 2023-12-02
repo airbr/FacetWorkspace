@@ -1,7 +1,53 @@
-<!-- <div id="tabs" hx-target="this" hx-swap="innerHTML" class=""><div class="tab-list" role="tablist">
-    <button hx-get="/html-partials/tab1" role="tab" aria-selected="false" aria-controls="tab-content">Tab 1</button>
-    <button hx-get="/html-partials/tab2" role="tab" aria-selected="false" aria-controls="tab-content">Tab 2</button>
-    <button hx-get="/html-partials/tab3" class="selected" aria-selected="true" autofocus="" role="tab" aria-controls="tab-content">Tab 3</button>
+<div id="tabs" hx-target="#tabs-container" hx-swap="innerHTML" class="">
+    <div class="tab-list" role="tablist">
+    <button hx-get="/html-partials/tab1" role="tab" aria-selected="false" aria-controls="tab-content">Example 1: fancy-hyperlink</button>
+    <button hx-get="/html-partials/tab2" role="tab" aria-selected="false" aria-controls="tab-content">Example 2: subdued-text</button>
+    <button hx-get="/html-partials/tab3" role="tab" class="selected" aria-selected="true" autofocus="" aria-controls="tab-content">Example 3: checkbox-menu</button>
 </div>
 
-<h3>Tab Three</h3> -->
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+
+<checkbox-menu>
+</checkbox-menu>
+
+<h4>CSS only Accessible Custom checkboxes inside of a web component</h4>
+<h2>"automatic" fallback for IE</h2>
+
+<p class="txtcenter">
+  <a class="btn" href="https://www.creativejuiz.fr/blog/en/tutorials/customize-checkbox-and-radio-button-with-css">Read older but good article</a>
+</p>
+
+<p class="txtcenter">Custom styles on modern browsers.<br/>Classical checkboxes on IE8 and lower.</p>
+</div>
+<!-- <h3> Declaration in HTML:</h3>
+
+<code>
+    <pre>
+&ltsubdued-text&gt 
+This is Subdued Text
+&lt/subdued-text&gt
+</pre></code>
+<h3>Component definition (in HTML, CSS):</h3>
+<code>
+<pre>
+&lttemplate component="subdued-text"&gt
+
+&ltdiv&gt
+&ltsmall&gt&ltslot&gt&lt/slot&gt&lt/small&gt
+&lt/div&gt
+
+&ltstyle&gt
+div {
+    font-style: italic,
+    text-align: center;
+}
+small:hover {
+    font-size: larger;
+}
+&lt/style&gt
+
+&lt/template&gt
+</pre>
+</code>
+   </div>     
+</div> -->
