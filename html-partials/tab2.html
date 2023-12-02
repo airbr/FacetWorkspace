@@ -3,7 +3,6 @@
     <button hx-get="/html-partials/tab1" role="tab" aria-selected="false" aria-controls="tab-content">Example 1: fancy-hyperlink</button>
     <button hx-get="/html-partials/tab2" class="selected" aria-selected="true" autofocus="" role="tab" aria-selected="false" aria-controls="tab-content">Example 2: subdued-text</button>
     <!-- <button hx-get="/html-partials/tab3" role="tab" aria-selected="false" aria-controls="tab-content">Tab 3</button> -->
-    </div>    
 </div>
 <br>
 <br>
@@ -13,30 +12,37 @@
 <h3> Declaration in HTML:</h3>
 
 <code>
-  <pre>
+    <pre>
 &ltsubdued-text&gt 
 This is Subdued Text
 &lt/subdued-text&gt
 </pre></code>
 <h3>Component definition (in HTML, CSS):</h3>
 <code>
-  <pre>
-    &lttemplate component="subdued-text"&gt
+<pre>
+&lttemplate component="subdued-text"&gt
 
-    &ltdiv&gt
-    &ltsmall&gt&ltslot&gt&lt/slot&gt&lt/small&gt
-    &lt/div&gt
+&ltdiv&gt
+&ltsmall&gt&ltslot&gt&lt/slot&gt&lt/small&gt
+&lt/div&gt
 
-    &ltstyle&gt
-    div {
-        font-style: italic,
-        text-align: center;
-    }
-    small:hover {
-        font-size: larger;
-    }
-    &lt/style&gt
+&ltstyle&gt
+div {
+    font-style: italic,
+    text-align: center;
+}
+small:hover {
+    font-size: larger;
+}
+&lt/style&gt
 
-    &lt/template&gt
+&lt/template&gt
 </pre>
 </code>
+
+
+
+
+
+   </div>     
+</div>

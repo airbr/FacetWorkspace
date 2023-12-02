@@ -87,7 +87,7 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-.tab-list button {
+#tabs button {
   background-color: #04AA6D; /* Green */
   border: none;
   color: white;
