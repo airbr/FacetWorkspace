@@ -1,21 +1,24 @@
 <div id="tabs" hx-target="#tabs-container" hx-swap="innerHTML" class="">
-    <div class="tab-list" role="tablist">
+    <div class="tab-list" role="tablist" hx-boost="true">
     <button hx-get="/html-partials/tab1" role="tab" aria-selected="false" aria-controls="tab-content">Example 1: fancy-hyperlink</button>
     <button hx-get="/html-partials/tab2" role="tab" aria-selected="false" aria-controls="tab-content">Example 2: subdued-text</button>
-    <button hx-get="/html-partials/tab3" role="tab" class="selected" aria-selected="true" autofocus="" aria-controls="tab-content">Example 3: checkbox-menu</button>
+    <button hx-get="/html-partials/tab3" role="tab" class="selected" aria-selected="true" autofocus="" aria-controls="tab-content">Example 3: is-land</button>
 </div>
 
 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
 
-<checkbox-menu>
-</checkbox-menu>
 
-<h4>CSS only Accessible Custom checkboxes inside of a web component</h4>
-<h2>"automatic" fallback for IE - may get interfered by web component, but cool!</h2>
+    <h3>Works with &lt;details&gt; in is-land component</h3>
+    <details>
+        <summary>The child content in this &lt;details&gt; will not be initialized until you open it</summary>
+    
+        <is-land on:visible>
+            <fancy-hyperlink href="https://morganwebdev.com">Fancy Hyperlink</fancy-hyperlink>
+        </is-land>
+    </details>
 
-<p class="txtcenter">
-  <a class="btn" href="https://www.creativejuiz.fr/blog/en/tutorials/customize-checkbox-and-radio-button-with-css">Read older but good article</a>
-</p>
+
+
 </div>
 <!-- <h3> Declaration in HTML:</h3>
 
