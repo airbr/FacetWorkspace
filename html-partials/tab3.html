@@ -6,15 +6,40 @@
 </div>
 
 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-
+<style>
+    is-land[ready]::before {
+        content: "Working!";
+    }
+</style>
 
     <h3>Works with &lt;details&gt; in is-land component</h3>
     <details>
-        <summary>The child content in this &lt;details&gt; will not be initialized until you open it</summary>
+        <summary>The child content in this &lt;details&gt; will not be initialized until you open it.
+            Green background indicates component is initialized.
+        </summary>
     
-        <is-land on:visible>
+        <h1>Initializes on visible</h1>
+        <is-land on:visible style="display: block;">
             <fancy-hyperlink href="https://morganwebdev.com">Fancy Hyperlink</fancy-hyperlink>
         </is-land>
+
+        <h1>Initializes on interaction</h1>
+        <is-land on:interaction style="display: block;">
+            <fancy-hyperlink href="https://morganwebdev.com">Fancy Hyperlink</fancy-hyperlink>
+        </is-land>
+
+        <h1>Initializes if save data mode present</h1>
+
+        <is-land on:save-data style="display: block;">
+            <fancy-hyperlink href="https://morganwebdev.com">Fancy Hyperlink</fancy-hyperlink>
+        </is-land>
+
+        <h1>Initializes on if no save data mode present</h1>
+
+        <is-land  on:save-data="false" style="display: block;">
+            <fancy-hyperlink href="https://morganwebdev.com">Fancy Hyperlink</fancy-hyperlink>
+        </is-land>
+
     </details>
 
 
